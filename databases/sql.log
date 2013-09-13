@@ -1,0 +1,168 @@
+timestamp: 2013-07-26T22:13:31.629901
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    first_name CHAR(512),
+    last_name CHAR(512),
+    email CHAR(512),
+    password CHAR(512),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2013-07-26T22:13:31.791762
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-07-26T22:13:31.935533
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:32.092360
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2013-07-26T22:13:32.272779
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-07-26T22:13:32.451896
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2013-07-26T22:13:32.630553
+CREATE TABLE t_track(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title_string CHAR(512),
+    f_description TEXT,
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:32.810744
+CREATE TABLE t_track_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title_string CHAR(512),
+    f_description TEXT,
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_track(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:32.977867
+CREATE TABLE t_requirement(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_level_string CHAR(512),
+    f_title_string CHAR(512),
+    f_description TEXT,
+    f_upload CHAR(1),
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:33.134575
+CREATE TABLE t_requirement_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_level_string CHAR(512),
+    f_title_string CHAR(512),
+    f_description TEXT,
+    f_upload CHAR(1),
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_requirement(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:33.312174
+CREATE TABLE t_trainee(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_name CHAR(512),
+    f_phonenumbers TEXT,
+    f_email CHAR(512),
+    f_address CHAR(512),
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:33.471473
+CREATE TABLE t_trainee_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_name CHAR(512),
+    f_phonenumbers TEXT,
+    f_email CHAR(512),
+    f_address CHAR(512),
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_trainee(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:33.648304
+CREATE TABLE t_completion(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_trainee_id INTEGER REFERENCES t_trainee(id) ON DELETE CASCADE,
+    f_completed DATE,
+    f_requirement_id INTEGER REFERENCES t_requirement(id) ON DELETE CASCADE,
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-07-26T22:13:33.815157
+CREATE TABLE t_completion_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_trainee_id INTEGER REFERENCES t_trainee(id) ON DELETE CASCADE,
+    f_completed DATE,
+    f_requirement_id INTEGER REFERENCES t_requirement(id) ON DELETE CASCADE,
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_completion(id) ON DELETE CASCADE
+);
+success!

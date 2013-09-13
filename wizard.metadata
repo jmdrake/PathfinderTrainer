@@ -1,0 +1,185 @@
+(dp0
+S'table_trainee'
+p1
+(lp2
+S'name'
+p3
+aS'phonenumbers multiple'
+p4
+aS'email'
+p5
+aS'address'
+p6
+asS'tables'
+p7
+(lp8
+S'auth_user'
+p9
+aS'trainee'
+p10
+aS'track'
+p11
+aS'requirement'
+p12
+aS'completion'
+p13
+asS'page_requirement_manage'
+p14
+S'## Manage requirement\n{{=form}}'
+p15
+sS'name'
+p16
+S'PathfinderTrainer'
+p17
+sS'table_requirement'
+p18
+(lp19
+S'level string'
+p20
+aS'title string'
+p21
+aS'description text'
+p22
+aS'upload boolean'
+p23
+asS'page_completion_manage'
+p24
+S'## Manage completion\n{{=form}}'
+p25
+sS'page_index'
+p26
+S'# Welcome to my new app'
+p27
+sS'table_track'
+p28
+(lp29
+S'title string'
+p30
+aS'description text'
+p31
+asS'page_error'
+p32
+S'# Error: the document does not exist'
+p33
+sS'page_trainee_manage'
+p34
+S'## Manage trainee\n{{=form}}'
+p35
+sS'params'
+p36
+(lp37
+(S'title'
+p38
+S'Pathfinder Training Database'
+p39
+tp40
+a(S'subtitle'
+p41
+S'powered by web2py'
+p42
+tp43
+a(S'author'
+p44
+S'John Drake'
+p45
+tp46
+a(S'author_email'
+p47
+S'johnmdrake@gmail.com'
+p48
+tp49
+a(S'keywords'
+p50
+S''
+p51
+tp52
+a(S'description'
+p53
+S'Web application to track Pathfinder Master Guide, PLA and PIA training.'
+p54
+tp55
+a(S'layout_theme'
+p56
+S'Default'
+p57
+tp58
+a(S'database_uri'
+p59
+S'sqlite://storage.sqlite'
+p60
+tp61
+a(S'security_key'
+p62
+S'6ca5d729-2943-45f8-96fa-05db2f96894c'
+p63
+tp64
+a(S'email_server'
+p65
+S'localhost'
+p66
+tp67
+a(S'email_sender'
+p68
+S'you@example.com'
+p69
+tp70
+a(S'email_login'
+p71
+g51
+tp72
+a(S'login_method'
+p73
+S'local'
+p74
+tp75
+a(S'login_config'
+p76
+g51
+tp77
+a(S'plugins'
+p78
+(lp79
+g51
+atp80
+asS'page_track_manage'
+p81
+S'## Manage track\n{{=form}}'
+p82
+sS'table_completion'
+p83
+(lp84
+S'trainee_id trainee'
+p85
+aS'completed date'
+p86
+aS'requirement_id requirement'
+p87
+asS'table_auth_user'
+p88
+(lp89
+S'username'
+p90
+aS'first_name'
+p91
+aS'last_name'
+p92
+aS'email'
+p93
+aS'password'
+p94
+asS'pages'
+p95
+(lp96
+S'index'
+p97
+aS'error'
+p98
+aS'trainee_manage'
+p99
+aS'track_manage'
+p100
+aS'requirement_manage'
+p101
+aS'completion_manage'
+p102
+as.
